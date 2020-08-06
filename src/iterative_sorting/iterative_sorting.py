@@ -1,26 +1,30 @@
-# TO-DO: Complete the selection_sort() function below
+# checks if positions are valid then, if true, performs swap
+def swap_positions(arr, pos1, pos2):
+    if (pos1 in range(0, len(arr))) and (pos2 in range(0, len(arr))) and (pos1 != pos2):
+        arr[pos1], arr[pos2] = arr[pos2], arr[pos1]
+
+
 def selection_sort(arr):
-    # loop through n-1 elements
     for i in range(0, len(arr) - 1):
-        cur_index = i
-        smallest_index = cur_index
-        # TO-DO: find next smallest element
-        # (hint, can do in 3 loc)
-        # Your code here
-
-
-        # TO-DO: swap
-        # Your code here
-
+        smallest_index = i
+        for j in range(i+1, len(arr)):
+            if arr[j] < arr[smallest_index]:
+                smallest_index = j
+        swap_positions(arr, i, smallest_index)
     return arr
 
 
-# TO-DO:  implement the Bubble Sort function below
 def bubble_sort(arr):
-    # Your code here
-
-
+    end_of_list = len(arr)-1
+    while 0 < end_of_list:
+        current_index = 0
+        while current_index < end_of_list:
+            if arr[current_index+1] < arr[current_index]:
+                swap_positions(arr, current_index, current_index+1)
+            current_index += 1
+        end_of_list -= 1
     return arr
+
 
 '''
 STRETCH: implement the Counting Sort function below
@@ -39,8 +43,29 @@ buckets.
 
 What is the time and space complexity of the counting sort algorithm?
 '''
-def counting_sort(arr, maximum=None):
-    # Your code here
 
+
+def counting_sort(arr, maximum=None):
+
+    max_value = None
+    if maximum is not None:
+        max_value = maximum + 1
+    elif 0 < len(arr):
+        max_value = max(arr) + 1
+
+    if (max_value is not None) and (0 < max_value):
+        counting_list = [0]*max_value
+        for value in arr:
+            if 0 <= value:
+                counting_list[value] += 1
+            else:
+                return "Error, negative numbers not allowed in Count Sort"
+
+        main_index = 0
+        for i in range(len(counting_list)):
+            while 0 < counting_list[i]:
+                arr[main_index] = i
+                counting_list[i] -= 1
+                main_index += 1
 
     return arr
