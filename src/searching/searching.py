@@ -5,6 +5,7 @@ def linear_search(arr, target):
     return -1
 
 
+# ITERATIVE IMPLEMENTATION:
 def binary_search(arr, target):
     if 0 < len(arr):
         start_pointer = 0
@@ -18,3 +19,18 @@ def binary_search(arr, target):
             else:
                 return target_pointer
     return -1
+
+
+# RECURSIVE IMPLEMENTATION:
+# def binary_search(arr, start_pointer, end_pointer, target):
+#     if end_pointer >= start_pointer:
+#         target_pointer = (start_pointer + end_pointer) // 2
+
+#         if arr[target_pointer] == target:
+#             return target_pointer
+#         elif target < arr[target_pointer]:
+#             return binary_search(arr, start_pointer, target_pointer-1, target)
+#         else:
+#             return binary_search(arr, target_pointer+1, end_pointer, target)
+#     else:
+#         return -1
