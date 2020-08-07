@@ -25,7 +25,6 @@ def binary_search(arr, target):
 # def binary_search(arr, start_pointer, end_pointer, target):
 #     if end_pointer >= start_pointer:
 #         target_pointer = (start_pointer + end_pointer) // 2
-
 #         if arr[target_pointer] == target:
 #             return target_pointer
 #         elif target < arr[target_pointer]:
